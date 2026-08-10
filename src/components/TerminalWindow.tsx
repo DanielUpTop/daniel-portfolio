@@ -11,7 +11,7 @@ const lines = [
     className: 'text-warm',
   },
   { prompt: '$', text: 'echo $status', delay: 2400 },
-  { prompt: '>', text: 'Open to software engineering roles ✓', delay: 3000, className: 'text-accent' },
+  { prompt: '>', text: 'Open to technical and non technical roles ✓', delay: 3000, className: 'text-accent' },
 ];
 
 export function TerminalWindow() {

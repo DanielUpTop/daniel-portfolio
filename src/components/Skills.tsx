@@ -1,5 +1,6 @@
 import { skills } from '../data/profile';
 import { useInView } from '../hooks/useInView';
+import { CapabilityMap } from './CapabilityMap';
 import { SkillMarquee } from './SkillMarquee';
 
 export function Skills() {
@@ -10,7 +11,9 @@ export function Skills() {
       <SkillMarquee />
 
       <section id="skills" className="section-container" aria-labelledby="skills-heading">
-        <div className="mb-12 text-center">
+        <CapabilityMap />
+
+        <div className="mb-12 mt-20 text-center">
           <span className="section-label">Expertise</span>
           <h2 id="skills-heading" className="section-title">
             Skills &amp; Technologies

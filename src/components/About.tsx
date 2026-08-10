@@ -1,5 +1,6 @@
 import { profile, education, achievements, extracurriculars } from '../data/profile';
 import { useInView } from '../hooks/useInView';
+import { StrategicMoves } from './StrategicMoves';
 
 const highlights = [
   { label: 'Builder', detail: 'Full-stack car sharing platform' },
@@ -23,8 +24,8 @@ export function About() {
             Builder, Investigator &amp; Strategic Thinker
           </h2>
           <p className="mt-4 text-content-secondary">
-            University of Leicester graduate (2:1) combining full-stack development with cyber
-            security investigation skills.
+            University of Leicester graduate (Upper Class 2:1) combining full-stack development with
+            cyber security investigation skills.
           </p>
 
           <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -85,6 +86,8 @@ export function About() {
           </div>
         </div>
       </div>
+
+      <StrategicMoves />
     </section>
   );
 }

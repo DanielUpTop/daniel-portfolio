@@ -34,7 +34,7 @@ export function Contact() {
             Let&apos;s connect
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-content-secondary">
-            I&apos;m actively looking for software engineering roles and would love to hear from
+            I&apos;m actively looking for technical and non-technical roles and would love to hear from
             recruiters and collaborators. Reach out by email, phone, or GitHub.
           </p>
 
