@@ -1,5 +1,6 @@
 import { ThemeProvider } from './context/ThemeContext';
 import { SkipLink } from './components/SkipLink';
+import { ScrollProgress } from './components/ScrollProgress';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -12,6 +13,7 @@ import { Footer } from './components/Footer';
 export default function App() {
   return (
     <ThemeProvider>
+      <ScrollProgress />
       <SkipLink />
       <Header />
       <main id="main-content">

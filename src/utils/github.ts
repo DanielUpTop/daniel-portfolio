@@ -26,6 +26,9 @@ export async function fetchGitHubRepos(): Promise<Project[]> {
         description: meta?.description ?? repo.description,
         featured: meta?.featured ?? false,
         highlights: meta?.highlights ?? (repo.language ? [repo.language] : []),
+        caseStudy: meta?.caseStudy,
+        hideFromGrid: meta?.hideFromGrid,
+        period: meta?.period,
       };
     })
     .sort((a, b) => {

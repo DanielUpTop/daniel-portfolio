@@ -1,4 +1,8 @@
+import { useEffect, useState } from 'react';
 import { profile } from '../data/profile';
+import { AnimatedGrid } from './AnimatedGrid';
+import { StatsBar } from './StatsBar';
+import { TerminalWindow } from './TerminalWindow';
 
 function ArrowDownIcon() {
   return (
@@ -9,12 +13,42 @@ function ArrowDownIcon() {
 }
 
 export function Hero() {
+  const [roleIndex, setRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentRole = profile.roles[roleIndex];
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          if (displayText.length < currentRole.length) {
+            setDisplayText(currentRole.slice(0, displayText.length + 1));
+          } else {
+            setTimeout(() => setIsDeleting(true), 2000);
+          }
+        } else {
+          if (displayText.length > 0) {
+            setDisplayText(displayText.slice(0, -1));
+          } else {
+            setIsDeleting(false);
+            setRoleIndex((prev) => (prev + 1) % profile.roles.length);
+          }
+        }
+      },
+      isDeleting ? 40 : 80
+    );
+    return () => clearTimeout(timeout);
+  }, [displayText, isDeleting, roleIndex]);
+
   return (
     <section
-      className="relative flex min-h-screen items-center pt-20"
+      className="relative flex min-h-screen items-center overflow-hidden pt-20"
       aria-labelledby="hero-heading"
     >
-      <div className="section-container w-full">
+      <AnimatedGrid />
+
+      <div className="section-container relative w-full">
         <div className="grid items-center gap-12 lg:grid-cols-[1fr_auto]">
           <div className="max-w-2xl">
             <p
@@ -31,7 +65,7 @@ export function Hero() {
               style={{ animationDelay: '0.1s' }}
             >
               Hi, I&apos;m{' '}
-              <span className="bg-gradient-to-r from-accent to-warm bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-accent via-teal-400 to-warm bg-clip-text text-transparent">
                 {profile.name.split(' ')[0]}
               </span>
             </h1>
@@ -40,7 +74,8 @@ export function Hero() {
               className="mt-2 font-display text-xl text-content-secondary motion-safe:animate-fade-up md:text-2xl"
               style={{ animationDelay: '0.2s' }}
             >
-              {profile.title}
+              <span className="text-accent">{displayText}</span>
+              <span className="ml-0.5 inline-block h-[1.1em] w-[2px] animate-pulse bg-accent align-middle" />
             </p>
 
             <p
@@ -61,6 +96,9 @@ export function Hero() {
               <a href="#contact" className="btn-secondary">
                 Get in touch
               </a>
+              <a href="#experience" className="btn-secondary hidden sm:inline-flex">
+                My experience
+              </a>
             </div>
 
             <p className="mt-8 flex items-center gap-2 text-sm text-content-muted">
@@ -70,19 +108,11 @@ export function Hero() {
               </svg>
               {profile.location}
             </p>
+
+            <StatsBar />
           </div>
 
-          <div className="hidden lg:block" aria-hidden="true">
-            <div className="relative">
-              <div className="absolute -inset-4 rounded-full bg-accent/20 blur-3xl motion-safe:animate-float" />
-              <div className="glass-card relative flex h-64 w-64 items-center justify-center p-8">
-                <div className="text-center">
-                  <div className="font-display text-7xl font-bold text-accent/80">&lt;/&gt;</div>
-                  <p className="mt-2 text-sm text-content-muted">Full-stack developer</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <TerminalWindow />
         </div>
       </div>
 

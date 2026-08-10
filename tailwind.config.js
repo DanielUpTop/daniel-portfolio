@@ -28,11 +28,14 @@ export default {
       fontFamily: {
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
         display: ['"Fraunces"', 'Georgia', 'serif'],
+        mono: ['"JetBrains Mono"', '"Fira Code"', 'ui-monospace', 'monospace'],
       },
       animation: {
         'fade-up': 'fadeUp 0.6s ease-out forwards',
         'fade-in': 'fadeIn 0.5s ease-out forwards',
         float: 'float 6s ease-in-out infinite',
+        marquee: 'marquee 40s linear infinite',
+        'gradient-shift': 'gradientShift 8s ease infinite',
       },
       keyframes: {
         fadeUp: {
@@ -47,6 +50,20 @@ export default {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-8px)' },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        gradientShift: {
+          '0%, 100%': { backgroundPosition: '0% 50%' },
+          '50%': { backgroundPosition: '100% 50%' },
+        },
+      },
+      backgroundImage: {
+        grid: 'linear-gradient(to right, rgb(var(--text-primary) / 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgb(var(--text-primary) / 0.04) 1px, transparent 1px)',
+      },
+      backgroundSize: {
+        grid: '64px 64px',
       },
     },
   },

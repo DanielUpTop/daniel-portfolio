@@ -27,39 +27,41 @@ function PhoneIcon({ className }: { className?: string }) {
 export function Contact() {
   return (
     <section id="contact" className="section-container" aria-labelledby="contact-heading">
-      <div className="glass-card mx-auto max-w-3xl p-8 text-center md:p-12">
-        <span className="section-label">Get in touch</span>
-        <h2 id="contact-heading" className="section-title">
-          Let&apos;s connect
-        </h2>
-        <p className="mx-auto mt-4 max-w-lg text-content-secondary">
-          I&apos;m actively looking for software engineering roles and would love to hear from
-          recruiters and collaborators. Reach out by email, phone, or GitHub.
-        </p>
+      <div className="gradient-border mx-auto max-w-3xl p-[1px]">
+        <div className="glass-card rounded-2xl p-8 text-center md:p-12">
+          <span className="section-label">Get in touch</span>
+          <h2 id="contact-heading" className="section-title">
+            Let&apos;s connect
+          </h2>
+          <p className="mx-auto mt-4 max-w-lg text-content-secondary">
+            I&apos;m actively looking for software engineering roles and would love to hear from
+            recruiters and collaborators. Reach out by email, phone, or GitHub.
+          </p>
 
-        <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
-          <a href={`mailto:${profile.email}`} className="btn-primary w-full sm:w-auto">
-            <MailIcon className="h-5 w-5" />
-            {profile.email}
-          </a>
-          <a href={`tel:${profile.phone.replace(/\s/g, '')}`} className="btn-secondary w-full sm:w-auto">
-            <PhoneIcon className="h-5 w-5" />
-            {profile.phone}
-          </a>
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary w-full sm:w-auto"
-          >
-            <GitHubIcon className="h-5 w-5" />
-            GitHub
-          </a>
+          <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row sm:flex-wrap">
+            <a href={`mailto:${profile.email}`} className="btn-primary w-full sm:w-auto">
+              <MailIcon className="h-5 w-5" />
+              {profile.email}
+            </a>
+            <a href={`tel:${profile.phone.replace(/\s/g, '')}`} className="btn-secondary w-full sm:w-auto">
+              <PhoneIcon className="h-5 w-5" />
+              {profile.phone}
+            </a>
+            <a
+              href={profile.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-secondary w-full sm:w-auto"
+            >
+              <GitHubIcon className="h-5 w-5" />
+              GitHub
+            </a>
+          </div>
+
+          <p className="mt-8 text-sm text-content-muted">
+            Based in {profile.location}
+          </p>
         </div>
-
-        <p className="mt-8 text-sm text-content-muted">
-          Based in {profile.location}
-        </p>
       </div>
     </section>
   );
