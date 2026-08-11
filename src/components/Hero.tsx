@@ -87,8 +87,8 @@ export function Hero() {
                   src="/daniel-profile.png"
                   alt="Daniel Ahenkorah — Software Engineer and Full-Stack Developer"
                   className="profile-photo"
-                  width={224}
-                  height={280}
+                  width={288}
+                  height={360}
                   loading="eager"
                   decoding="async"
                 />

@@ -107,38 +107,45 @@
 
   .profile-photo-frame {
     position: relative;
-    padding: 3px;
-    border-radius: 1.25rem;
+    padding: 4px;
+    border-radius: 1.5rem;
     background: linear-gradient(135deg, #3dd6c8, #2a9d92, #f4a261);
     box-shadow:
-      0 8px 32px rgba(61, 214, 200, 0.2),
-      0 2px 8px rgba(0, 0, 0, 0.1);
+      0 12px 40px rgba(61, 214, 200, 0.25),
+      0 4px 12px rgba(0, 0, 0, 0.12);
   }
 
   .profile-photo-frame::before {
     content: '';
     position: absolute;
-    inset: -4px;
-    border-radius: 1.5rem;
+    inset: -6px;
+    border-radius: 1.75rem;
     background: linear-gradient(135deg, rgba(61, 214, 200, 0.3), rgba(244, 162, 97, 0.2));
-    filter: blur(12px);
+    filter: blur(16px);
     z-index: -1;
     opacity: 0.6;
   }
 
   .profile-photo {
     display: block;
-    width: 11rem;
-    height: 13.75rem;
-    border-radius: 1rem;
+    width: 14rem;
+    height: 17.5rem;
+    border-radius: 1.25rem;
     object-fit: cover;
     object-position: center top;
   }
 
   @media (min-width: 640px) {
     .profile-photo {
-      width: 13rem;
-      height: 16.25rem;
+      width: 16rem;
+      height: 20rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .profile-photo {
+      width: 18rem;
+      height: 22.5rem;
     }
   }
 
