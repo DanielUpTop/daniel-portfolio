@@ -74,14 +74,94 @@
 
   .section-title {
     @apply font-display text-3xl font-semibold tracking-tight text-content-primary md:text-4xl;
+    background: linear-gradient(135deg, rgb(var(--text-primary)), rgb(var(--text-primary)) 60%, rgba(61, 214, 200, 0.8));
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .dark .section-title {
+    background: linear-gradient(135deg, rgb(var(--text-primary)), rgb(var(--text-primary)) 70%, rgba(61, 214, 200, 0.9));
+    -webkit-background-clip: text;
+    background-clip: text;
   }
 
   .glass-card {
-    @apply rounded-2xl border border-content-primary/10 bg-surface-raised/80 backdrop-blur-sm;
+    @apply rounded-2xl border border-content-primary/10 bg-surface-raised/80 backdrop-blur-sm transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-accent/20 shadow-lg shadow-accent/5;
+  }
+
+  .skill-pill {
+    @apply motion-safe:transition-transform motion-safe:duration-200;
+  }
+
+  .skill-pill:hover {
+    @apply motion-safe:-translate-y-0.5;
+  }
+
+  .skill-pill:active {
+    @apply motion-safe:scale-95;
+  }
+
+  .profile-photo-frame {
+    position: relative;
+    padding: 3px;
+    border-radius: 1.25rem;
+    background: linear-gradient(135deg, #3dd6c8, #2a9d92, #f4a261);
+    box-shadow:
+      0 8px 32px rgba(61, 214, 200, 0.2),
+      0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-photo-frame::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 1.5rem;
+    background: linear-gradient(135deg, rgba(61, 214, 200, 0.3), rgba(244, 162, 97, 0.2));
+    filter: blur(12px);
+    z-index: -1;
+    opacity: 0.6;
+  }
+
+  .profile-photo {
+    display: block;
+    width: 11rem;
+    height: 13.75rem;
+    border-radius: 1rem;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  @media (min-width: 640px) {
+    .profile-photo {
+      width: 13rem;
+      height: 16.25rem;
+    }
   }
 
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent-muted hover:shadow-xl hover:shadow-accent/30 focus-visible:outline-offset-4;
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-xl bg-accent px-6 py-3 text-sm font-semibold text-slate-900 shadow-lg shadow-accent/20 transition-all hover:-translate-y-0.5 hover:bg-accent-muted hover:shadow-xl hover:shadow-accent/30 focus-visible:outline-offset-4;
+  }
+
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(255, 255, 255, 0.25) 50%,
+      transparent 60%
+    );
+    transform: translateX(-100%);
+    transition: transform 0.6s ease;
+  }
+
+  .btn-primary:hover::after {
+    transform: translateX(100%);
   }
 
   .btn-secondary {

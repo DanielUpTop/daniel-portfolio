@@ -1,4 +1,5 @@
 import { profile } from '../data/profile';
+import { RevealOnScroll } from './RevealOnScroll';
 
 function GitHubIcon({ className }: { className?: string }) {
   return (
@@ -27,8 +28,12 @@ function PhoneIcon({ className }: { className?: string }) {
 export function Contact() {
   return (
     <section id="contact" className="section-container" aria-labelledby="contact-heading">
-      <div className="gradient-border mx-auto max-w-3xl p-[1px]">
-        <div className="glass-card rounded-2xl p-8 text-center md:p-12">
+      <RevealOnScroll>
+        <div className="gradient-border mx-auto max-w-3xl p-[1px]">
+          <div className="relative overflow-hidden rounded-2xl bg-surface-raised/80 p-8 text-center backdrop-blur-sm md:p-12">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-accent/10 blur-3xl" aria-hidden="true" />
+            <div className="pointer-events-none absolute -bottom-16 -left-16 h-48 w-48 rounded-full bg-warm/10 blur-3xl" aria-hidden="true" />
+            <div className="relative">
           <span className="section-label">Get in touch</span>
           <h2 id="contact-heading" className="section-title">
             Let&apos;s connect
@@ -61,8 +66,10 @@ export function Contact() {
           <p className="mt-8 text-sm text-content-muted">
             Based in {profile.location}
           </p>
+            </div>
+          </div>
         </div>
-      </div>
+      </RevealOnScroll>
     </section>
   );
 }

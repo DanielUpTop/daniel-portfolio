@@ -32,7 +32,7 @@ export function About() {
             {highlights.map((item) => (
               <div
                 key={item.label}
-                className="group rounded-xl border border-content-primary/10 bg-surface-raised/50 p-4 transition-all hover:border-accent/30 hover:bg-accent/5"
+                className="group rounded-xl border border-content-primary/10 bg-surface-raised/50 p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/30 hover:bg-accent/5 hover:shadow-md hover:shadow-accent/5"
               >
                 <p className="text-sm font-semibold text-accent">{item.label}</p>
                 <p className="mt-1 text-sm text-content-secondary">{item.detail}</p>

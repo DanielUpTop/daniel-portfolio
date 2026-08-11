@@ -78,6 +78,23 @@ export function Hero() {
               <span className="ml-0.5 inline-block h-[1.1em] w-[2px] animate-pulse bg-accent align-middle" />
             </p>
 
+            <div
+              className="mt-6 motion-safe:animate-fade-up"
+              style={{ animationDelay: '0.25s' }}
+            >
+              <div className="profile-photo-frame inline-block">
+                <img
+                  src="/daniel-profile.png"
+                  alt="Daniel Ahenkorah — Software Engineer and Full-Stack Developer"
+                  className="profile-photo"
+                  width={224}
+                  height={280}
+                  loading="eager"
+                  decoding="async"
+                />
+              </div>
+            </div>
+
             <p
               className="mt-6 text-lg leading-relaxed text-content-secondary motion-safe:animate-fade-up"
               style={{ animationDelay: '0.3s' }}
@@ -89,7 +106,7 @@ export function Hero() {
               className="mt-8 flex flex-wrap gap-4 motion-safe:animate-fade-up"
               style={{ animationDelay: '0.4s' }}
             >
-              <a href="#projects" className="btn-primary group">
+              <a href="#projects" className="btn-primary group relative">
                 View my work
                 <ArrowDownIcon />
               </a>

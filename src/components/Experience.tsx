@@ -1,5 +1,6 @@
 import { experience } from '../data/profile';
 import { useInView } from '../hooks/useInView';
+import { RevealOnScroll } from './RevealOnScroll';
 
 const categoryColors: Record<string, string> = {
   'Cyber Security': 'bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20',
@@ -13,16 +14,18 @@ export function Experience() {
 
   return (
     <section id="experience" className="section-container" aria-labelledby="experience-heading">
-      <div className="mb-12">
-        <span className="section-label">Career</span>
-        <h2 id="experience-heading" className="section-title">
-          Professional Experience
-        </h2>
-        <p className="mt-3 max-w-xl text-content-secondary">
-          Technical builds, workshops, bootcamps, and industry programmes that shaped my skills
-          across full-stack development and cyber security.
-        </p>
-      </div>
+      <RevealOnScroll>
+        <div className="mb-12">
+          <span className="section-label">Career</span>
+          <h2 id="experience-heading" className="section-title">
+            Professional Experience
+          </h2>
+          <p className="mt-3 max-w-xl text-content-secondary">
+            Technical builds, workshops, bootcamps, and industry programmes that shaped my skills
+            across full-stack development and cyber security.
+          </p>
+        </div>
+      </RevealOnScroll>
 
       <ol
         ref={ref}
@@ -41,7 +44,7 @@ export function Experience() {
               aria-hidden="true"
             />
 
-            <article className="glass-card group p-6 transition-all hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 md:p-8">
+            <article className="glass-card group p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/20 hover:shadow-xl hover:shadow-accent/5 md:p-8">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <div className="mb-2 flex flex-wrap items-center gap-2">

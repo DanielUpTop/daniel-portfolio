@@ -1,6 +1,7 @@
 import { skills } from '../data/profile';
 import { useInView } from '../hooks/useInView';
 import { CapabilityMap } from './CapabilityMap';
+import { RevealOnScroll } from './RevealOnScroll';
 import { SkillMarquee } from './SkillMarquee';
 
 export function Skills() {
@@ -13,25 +14,27 @@ export function Skills() {
       <section id="skills" className="section-container" aria-labelledby="skills-heading">
         <CapabilityMap />
 
-        <div className="mb-12 mt-20 text-center">
-          <span className="section-label">Expertise</span>
-          <h2 id="skills-heading" className="section-title">
-            Skills &amp; Technologies
-          </h2>
-          <p className="mx-auto mt-3 max-w-xl text-content-secondary">
-            Technical and non-technical skills developed through university projects, independent
-            builds, workshops, and professional training programmes.
-          </p>
-        </div>
+        <RevealOnScroll>
+          <div className="mb-12 mt-20 text-center">
+            <span className="section-label">Expertise</span>
+            <h2 id="skills-heading" className="section-title">
+              Skills &amp; Technologies
+            </h2>
+            <p className="mx-auto mt-3 max-w-xl text-content-secondary">
+              Technical and non-technical skills developed through university projects, independent
+              builds, workshops, and professional training programmes.
+            </p>
+          </div>
+        </RevealOnScroll>
 
         <div
           ref={ref}
-          className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-4 ${inView ? '' : 'opacity-0'}`}
+          className={`grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-4 ${inView ? '' : 'opacity-0'}`}
         >
           {skills.map((group, groupIndex) => (
             <div
               key={group.category}
-              className={`glass-card group relative overflow-hidden p-6 transition-all hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 ${
+              className={`glass-card group relative flex h-full flex-col overflow-hidden p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 ${
                 inView ? 'motion-safe:animate-fade-up' : ''
               }`}
               style={{ animationDelay: `${groupIndex * 0.08}s` }}

@@ -36,6 +36,7 @@ export default {
         float: 'float 6s ease-in-out infinite',
         marquee: 'marquee 40s linear infinite',
         'gradient-shift': 'gradientShift 8s ease infinite',
+        shimmer: 'shimmer 2.5s ease-in-out infinite',
       },
       keyframes: {
         fadeUp: {
@@ -57,6 +58,10 @@ export default {
         gradientShift: {
           '0%, 100%': { backgroundPosition: '0% 50%' },
           '50%': { backgroundPosition: '100% 50%' },
+        },
+        shimmer: {
+          '0%, 100%': { opacity: '0.5' },
+          '50%': { opacity: '1' },
         },
       },
       backgroundImage: {
