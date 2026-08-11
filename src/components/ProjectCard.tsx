@@ -35,29 +35,36 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <article
-      className="group glass-card flex flex-col p-6 transition-all duration-300 hover:-translate-y-1 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/5 motion-safe:animate-fade-up"
+      className="group relative flex flex-col overflow-hidden rounded-2xl border border-content-primary/10 bg-surface-raised/80 p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-accent/40 hover:shadow-xl hover:shadow-accent/10 motion-safe:animate-fade-up"
       style={{ animationDelay: `${index * 0.1}s` }}
       aria-labelledby={`project-${project.id}-title`}
     >
-      <div className="mb-4 flex items-start justify-between gap-4">
-        <div className="flex items-center gap-3">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-accent/5 via-transparent to-warm/5 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+      <div className="pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full bg-accent/10 blur-2xl transition-opacity duration-300 group-hover:opacity-100 opacity-0" />
+
+      <div className="relative mb-4 flex items-start justify-between gap-4">
+        <div className="flex min-w-0 items-start gap-3">
           <div
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent transition-colors group-hover:bg-accent/20"
             aria-hidden="true"
           >
             <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z" />
             </svg>
           </div>
-          <div>
+          <div className="min-w-0">
             <h3
               id={`project-${project.id}-title`}
-              className="font-semibold text-content-primary group-hover:text-accent"
+              className="truncate font-mono text-sm font-semibold text-content-primary transition-colors group-hover:text-accent"
+              title={project.name}
             >
               {project.name}
             </h3>
             {project.featured && (
-              <span className="mt-0.5 inline-block text-xs font-medium text-warm">Featured</span>
+              <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-warm/10 px-2 py-0.5 text-xs font-medium text-warm">
+                <span className="h-1.5 w-1.5 rounded-full bg-warm" aria-hidden="true" />
+                Featured
+              </span>
             )}
           </div>
         </div>
@@ -67,7 +74,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
             href={project.html_url!}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 rounded-lg p-2 text-content-muted transition-colors hover:bg-content-primary/5 hover:text-accent"
+            className="relative shrink-0 rounded-lg p-2 text-content-muted transition-all hover:bg-accent/10 hover:text-accent"
             aria-label={`View ${project.name} on GitHub (opens in new tab)`}
           >
             <ExternalLinkIcon />
@@ -75,14 +82,14 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         )}
       </div>
 
-      <p className="mb-4 flex-1 text-sm leading-relaxed text-content-secondary">{description}</p>
+      <p className="relative mb-4 flex-1 text-sm leading-relaxed text-content-secondary">{description}</p>
 
       {project.highlights && project.highlights.length > 0 && (
-        <ul className="mb-4 flex flex-wrap gap-2" aria-label="Technologies used">
+        <ul className="relative mb-4 flex flex-wrap gap-2" aria-label="Technologies used">
           {project.highlights.map((tag) => (
             <li
               key={tag}
-              className="rounded-md bg-surface-overlay px-2.5 py-1 text-xs font-medium text-content-secondary"
+              className="rounded-full border border-content-primary/10 bg-surface-overlay/80 px-2.5 py-1 text-xs font-medium text-content-secondary transition-colors group-hover:border-accent/20"
             >
               {tag}
             </li>
@@ -90,7 +97,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </ul>
       )}
 
-      <footer className="mt-auto flex items-center justify-between border-t border-content-primary/5 pt-4 text-xs text-content-muted">
+      <footer className="relative mt-auto flex items-center justify-between border-t border-content-primary/10 pt-4 text-xs text-content-muted">
         <div className="flex items-center gap-4">
           {project.language && (
             <span className="flex items-center gap-1.5">

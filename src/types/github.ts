@@ -25,4 +25,7 @@ export interface GitHubUser {
 export interface Project extends GitHubRepo {
   featured?: boolean;
   highlights?: string[];
+  caseStudy?: boolean;
+  hideFromGrid?: boolean;
+  period?: string;
 }

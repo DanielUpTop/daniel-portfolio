@@ -9,6 +9,7 @@ export interface StaticProject {
   featured: boolean;
   highlights: string[];
   period?: string;
+  hideFromGrid?: boolean;
 }
 
 export type PortfolioProject = Project | (StaticProject & {

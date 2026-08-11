@@ -1,6 +1,8 @@
 import { ThemeProvider } from './context/ThemeContext';
 import { SkipLink } from './components/SkipLink';
 import { ScrollProgress } from './components/ScrollProgress';
+import { BackToTop } from './components/BackToTop';
+import { SectionDivider } from './components/SectionDivider';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -19,14 +21,21 @@ export default function App() {
       <Header />
       <main id="main-content">
         <Hero />
+        <SectionDivider />
         <About />
+        <SectionDivider />
         <Experience />
+        <SectionDivider />
         <Projects />
+        <SectionDivider />
         <CaseStudies />
+        <SectionDivider />
         <Skills />
+        <SectionDivider />
         <Contact />
       </main>
       <Footer />
+      <BackToTop />
     </ThemeProvider>
   );
 }

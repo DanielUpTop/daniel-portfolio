@@ -15,11 +15,11 @@ export const profile = {
 };
 
 export const stats = [
-  { value: 'Upper Class 2:1', label: '' },
-  { value: 'BSc Hons Software Engineer Graduate', label: '' },
-  { value: '23 Years Old', label: '' },
-  { value: 'Tech Enthusiast', label: '' },
-  { value: 'Data Explorer', label: '' },
+  { value: '2:1', label: 'Upper Class Honours' },
+  { value: 'BSc', label: 'Software Engineering Graduate' },
+  { value: '23', label: 'Years Old' },
+  { value: 'Tech', label: 'Enthusiast' },
+  { value: 'Data', label: 'Explorer' },
 ];
 
 export const education = [
@@ -171,28 +171,6 @@ export const extracurriculars = [
 ];
 
 export const staticProjects = [
-  {
-    id: 'car-sharing-web-app',
-    name: 'CarShare — Car Sharing Web Application',
-    description:
-      'Full-stack car-sharing application for vehicle browsing, booking, and fleet management — built as a final-year university project with reusable React components, RESTful APIs, and email notifications.',
-    html_url: null,
-    language: 'TypeScript',
-    featured: true,
-    highlights: ['React', 'Node.js', 'MySQL', 'REST APIs', 'OpenStreetMap'],
-    period: 'July 2025',
-  },
-  {
-    id: 'soc-brute-force-investigation',
-    name: 'SSH Brute Force Login Investigation',
-    description:
-      'Isolated two-host lab simulating an SSH brute force attack, mapped to MITRE ATT&CK techniques with a portable Sigma detection rule — full Blue Team investigation with terminal evidence and incident report.',
-    html_url: null,
-    language: 'Python',
-    featured: true,
-    highlights: ['MITRE ATT&CK', 'Sigma', 'Hydra', 'rsyslog', 'Multipass'],
-    period: 'July 2026',
-  },
   {
     id: 'student-marks-system',
     name: 'Student Marks Management System',

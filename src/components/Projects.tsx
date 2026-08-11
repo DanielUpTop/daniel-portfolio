@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useGitHubRepos } from '../hooks/useGitHubRepos';
 import { profile, staticProjects } from '../data/profile';
 import { ProjectCard } from './ProjectCard';
+import { RevealOnScroll } from './RevealOnScroll';
 import type { PortfolioProject } from '../types/project';
 
 function ProjectSkeleton() {
@@ -42,15 +43,18 @@ export function Projects() {
 
   const projects = useMemo<PortfolioProject[]>(() => {
     const staticItems = staticProjects.map(toPortfolioProject);
+    const githubIds = new Set(githubProjects.map((p) => String(p.id).toLowerCase()));
     const githubNames = new Set(githubProjects.map((p) => p.name.toLowerCase()));
     const uniqueStatic = staticItems.filter(
-      (p) => !githubNames.has(p.name.toLowerCase())
+      (p) => !githubIds.has(String(p.id).toLowerCase()) && !githubNames.has(p.name.toLowerCase())
     );
-    return [...githubProjects, ...uniqueStatic].sort((a, b) => {
-      if (a.featured && !b.featured) return -1;
-      if (!a.featured && b.featured) return 1;
-      return 0;
-    });
+    return [...githubProjects, ...uniqueStatic]
+      .filter((p) => !p.hideFromGrid)
+      .sort((a, b) => {
+        if (a.featured && !b.featured) return -1;
+        if (!a.featured && b.featured) return 1;
+        return 0;
+      });
   }, [githubProjects]);
 
   const filtered = useMemo(() => {
@@ -65,7 +69,8 @@ export function Projects() {
 
   return (
     <section id="projects" className="section-container" aria-labelledby="projects-heading">
-      <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <RevealOnScroll>
+        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
         <div>
           <span className="section-label">Portfolio</span>
           <h2 id="projects-heading" className="section-title">
@@ -106,7 +111,8 @@ export function Projects() {
             </button>
           ))}
         </div>
-      </div>
+        </div>
+      </RevealOnScroll>
 
       {languages.length > 0 && (
         <p className="mb-8 text-sm text-content-muted">

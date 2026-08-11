@@ -10,14 +10,38 @@ function GitHubIcon({ className }: { className?: string }) {
   );
 }
 
+const sectionIds = navLinks.map((link) => link.href.replace('#', ''));
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const observers: IntersectionObserver[] = [];
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (!element) return;
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) setActiveSection(id);
+        },
+        { rootMargin: '-40% 0px -50% 0px', threshold: 0 }
+      );
+
+      observer.observe(element);
+      observers.push(observer);
+    });
+
+    return () => observers.forEach((observer) => observer.disconnect());
   }, []);
 
   useEffect(() => {
@@ -28,6 +52,14 @@ export function Header() {
   }, [menuOpen]);
 
   const closeMenu = () => setMenuOpen(false);
+
+  const linkClass = (href: string) => {
+    const id = href.replace('#', '');
+    const isActive = activeSection === id;
+    return `relative text-sm font-medium transition-colors ${
+      isActive ? 'text-accent' : 'text-content-secondary hover:text-accent'
+    }`;
+  };
 
   return (
     <header
@@ -49,12 +81,11 @@ export function Header() {
         <div className="flex items-center gap-3">
           <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
             {navLinks.map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                className="text-sm font-medium text-content-secondary transition-colors hover:text-accent"
-              >
+              <a key={href} href={href} className={linkClass(href)}>
                 {label}
+                {activeSection === href.replace('#', '') && (
+                  <span className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-accent" aria-hidden="true" />
+                )}
               </a>
             ))}
             <a
@@ -102,7 +133,9 @@ export function Header() {
               <li key={href}>
                 <a
                   href={href}
-                  className="block py-2 text-lg font-medium text-content-primary hover:text-accent"
+                  className={`block py-2 text-lg font-medium transition-colors hover:text-accent ${
+                    activeSection === href.replace('#', '') ? 'text-accent' : 'text-content-primary'
+                  }`}
                   onClick={closeMenu}
                 >
                   {label}
