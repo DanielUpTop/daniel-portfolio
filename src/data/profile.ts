@@ -46,6 +46,20 @@ export const education = [
 
 export const experience = [
   {
+    company: 'FOs Perspectives Application Academy',
+    role: 'Insights Evening',
+    program: 'Industry Conference',
+    period: 'September 2026',
+    category: 'Professional Development',
+    highlights: [
+      'Attended the Insight Evening by FO Perspectives, sponsored by Barclays UK, at Canary Wharf, focused on practical career growth for post-graduates in technology.',
+      'Gained insight into how to build a career with intention, rather than simply settling into a routine role or waiting for opportunities to appear.',
+      'Learned from professionals across Goldman Sachs, Barclays UK, and Schroders about how to approach career development strategically and proactively.',
+      'Gained practical insight into the value of hearing honest career advice from experienced professionals and using it to shape a clearer personal path.',
+      'Left the programme with a stronger sense of purpose and motivation to continue developing my career in technology with greater intention.',
+    ],
+  },
+  {
     company: 'Independent Project',
     role: 'SSH Brute Force Attack Simulation & SOC Investigation',
     program: 'Cyber Security',
